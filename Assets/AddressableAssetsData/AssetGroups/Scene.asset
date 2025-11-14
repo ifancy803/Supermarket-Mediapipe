@@ -13,22 +13,20 @@ MonoBehaviour:
   m_Name: Scene
   m_EditorClassIdentifier: 
   m_GroupName: Scene
-  m_Data:
-    m_SerializedData: []
   m_GUID: 6386981c5c6fe204a8d361c5110b81ab
   m_SerializeEntries:
   - m_GUID: 467c5aa26f767114eb4b3fe8a7e97d60
-    m_Address: Assets/Scenes/MenuScene.unity
+    m_Address: MenuScene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c5cbfc6a63adcd419c8860ac8fcef39
-    m_Address: Assets/Scenes/Persistent.unity
+    m_Address: Persistent
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dcc54407e856cf44096b219607e3a113
-    m_Address: Assets/Scenes/GameScene1.unity
+    m_Address: GameScene1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -15,8 +15,9 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
 
     protected override void Awake()
     {
+        base.Awake();
         //  初始化菜单场景
-        //_ = InitializeMenu();
+        _ = InitializeMenu();
     }
 
     private async Task InitializeMenu()

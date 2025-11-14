@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -12,40 +10,34 @@ public class GameManager : Singleton<GameManager>
     public List<Room> rooms = new();
     public GameObject currentShelf = null;
 
-    [Header("计时器相关")] public bool gameStart = false;
+    [Header("计时器相关")]
+    public bool gameStart = false;
     public bool isCalculatingTime = false;
     public float updateDuration = 3f;
     public float gameStartTime = 0f;
-    public bool isWin = false;    
+    public bool isWin = false;
     private Coroutine timerCoroutine;
- 
-    [Header("广播")] public ObjectEventSO updateStuffEvent;
+
+    [Header("广播")]
+    public ObjectEventSO updateStuffEvent;
 
     protected override void Awake()
     {
         base.Awake();
         currentRoomIndex = 1;
-        
     }
 
     private void Update()
     {
-        // 只在需要时启动计时器，避免重复启动
         if (!isCalculatingTime && !isWin && timerCoroutine == null && gameStart)
-        {
             StartTimer();
-        }
 
-        // 游戏时间统计（如果游戏正在进行）
         if (!isWin && isCalculatingTime && gameStart)
-        {
             gameStartTime += Time.deltaTime;
-        }
 
-        if (score >= rooms[currentRoomIndex-1].winScore)
+        if (score >= rooms[currentRoomIndex - 1].winScore)
         {
             CurrentGameWin();
-            //TODO:当前关卡游戏胜利
         }
     }
 
@@ -53,53 +45,41 @@ public class GameManager : Singleton<GameManager>
     {
         isCalculatingTime = false;
         gameStartTime = 0f;
-        
+
         GameStart();
     }
 
     public void GameStart()
     {
-        currentShelf = Instantiate(rooms[currentRoomIndex-1].shelfPrefab);
+        currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab);
         StartNewStage();
     }
-    
-    
-    /// <summary>
-    /// 刷新物品,重新开始计时器
-    /// </summary>
+
     private IEnumerator TimerCoroutine(float duration)
     {
         isCalculatingTime = true;
         float elapsedTime = 0f;
-        
+
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
-        //计时结束，刷新物品
-        updateStuffEvent.RaiseEvent(null,this);
+
+        updateStuffEvent.RaiseEvent(null, this);
         isCalculatingTime = false;
-        timerCoroutine = null;  // 重要：重置协程引用
+        timerCoroutine = null;
     }
 
     [ContextMenu("开始计时")]
     public void StartTimer()
     {
-        if (timerCoroutine != null)
-        {
+        if (timerCoroutine != null || isWin)
             return;
-        }
-        
-        if (isWin)
-        {
-            return;
-        }
 
         timerCoroutine = StartCoroutine(TimerCoroutine(updateDuration));
     }
-    
+
     private void StopTimer()
     {
         if (timerCoroutine != null)
@@ -110,22 +90,43 @@ public class GameManager : Singleton<GameManager>
         isCalculatingTime = false;
     }
 
+    // ======================================================
+    // 保存关卡数据（唯一新增函数，其他逻辑不动）
+    // ======================================================
+    void SaveStage()
+    {
+        var data = new SaveDataManager.StageData()
+        {
+            PlayerID = "001",           // 如果你有全局 ID，可以改掉
+            StageIndex = currentRoomIndex,
+            Score = score,
+            UsedTime = gameStartTime,
+            UpdateGap = updateDuration,
+            Win = isWin,
+            RecordTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        };
+
+        SaveDataManager.Instance.SaveStage(data);
+    }
+    // ======================================================
+
+
     [ContextMenu("游戏胜利")]
     public void CurrentGameWin()
     {
-        if(currentRoomIndex != rooms.Count)
+        isWin = true;
+
+        SaveStage();     // ✔ 调用保存，不影响原逻辑
+
+        if (currentRoomIndex != rooms.Count)
             currentRoomIndex++;
         else
         {
-            //TODO:最后一关胜利通知ui等。。
             StopTimer();
-            isWin = true;
             return;
         }
-        isWin = true;
+
         StopTimer();
-        
-        //TODO:将score提交给ui
         StartNewStage();
     }
 
@@ -133,32 +134,32 @@ public class GameManager : Singleton<GameManager>
     public void StartNewStage()
     {
         score = 0;
-        updateDuration = rooms[currentRoomIndex-1].updateGap;
-        
-        gameStart  = true;
+        updateDuration = rooms[currentRoomIndex - 1].updateGap;
+
+        gameStart = true;
         isWin = false;
         gameStartTime = 0f;
         isCalculatingTime = false;
-        
-        //TODO: 根据关卡index创建架子 立即刷新一次物品
-        
-        Destroy(currentShelf);
-        currentShelf = Instantiate(rooms[currentRoomIndex-1].shelfPrefab);
-        updateStuffEvent.RaiseEvent(null,this);
+
+        if (currentShelf != null)
+            Destroy(currentShelf);
+
+        currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab);
+
+        updateStuffEvent.RaiseEvent(null, this);
     }
 
-    // 调试信息
     private void OnGUI()
     {
         GUILayout.Label($"计时状态: {isCalculatingTime}");
         GUILayout.Label($"游戏时间: {gameStartTime:F1}");
         GUILayout.Label($"协程状态: {(timerCoroutine != null ? "运行中" : "未运行")}");
     }
-    
+
     [ContextMenu("分数加5")]
     public void TestAddScore()
     {
-        score+=5;
+        score += 5;
     }
 }
 

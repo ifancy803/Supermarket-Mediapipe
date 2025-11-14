@@ -32,4 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MediaPipeUnity/Samples/Scenes/Legacy/MediaPipe Video/MediaPipe Video.unity
     guid: 16062faf4cda54140b781b925351b119
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/Scenes/MenuScene.unity
+    guid: 467c5aa26f767114eb4b3fe8a7e97d60
+  - enabled: 0
+    path: Assets/Scenes/Persistent.unity
+    guid: 8c5cbfc6a63adcd419c8860ac8fcef39
+  - enabled: 0
+    path: Assets/Scenes/GameScene1.unity
+    guid: dcc54407e856cf44096b219607e3a113
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: a6bd1a4c7dbf4b04ab0a59c30df47d96,
+      type: 2}
+  m_UseUCBPForAssetBundles: 0
