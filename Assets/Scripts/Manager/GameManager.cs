@@ -90,14 +90,12 @@ public class GameManager : Singleton<GameManager>
         isCalculatingTime = false;
     }
 
-    // ======================================================
-    // 保存关卡数据（唯一新增函数，其他逻辑不动）
-    // ======================================================
+    // 保存关卡数据
     void SaveStage()
     {
         var data = new SaveDataManager.StageData()
         {
-            PlayerID = "001",           // 如果你有全局 ID，可以改掉
+            PlayerID = SaveDataManager.Instance.CurrentPlayerID,   // 使用正确的玩家ID
             StageIndex = currentRoomIndex,
             Score = score,
             UsedTime = gameStartTime,
@@ -108,15 +106,13 @@ public class GameManager : Singleton<GameManager>
 
         SaveDataManager.Instance.SaveStage(data);
     }
-    // ======================================================
-
 
     [ContextMenu("游戏胜利")]
     public void CurrentGameWin()
     {
         isWin = true;
 
-        SaveStage();     // ✔ 调用保存，不影响原逻辑
+        SaveStage();
 
         if (currentRoomIndex != rooms.Count)
             currentRoomIndex++;

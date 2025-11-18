@@ -28,7 +28,7 @@ public class RegisterHandler : MonoBehaviour
     public GameObject disclaimerPanel;
     public Button agreeButton;
     public Text countdownText;
-    public int countdownTime = 10;
+    public int countdownTime = 1;
 
     void Start()
     {
@@ -45,7 +45,6 @@ public class RegisterHandler : MonoBehaviour
         if (dialogPanel != null) dialogPanel.SetActive(false);
     }
 
-    // 检查信息是否填写完整，决定是否显示确认按钮
     void CheckInputValid()
     {
         bool allFilled =
@@ -73,11 +72,10 @@ public class RegisterHandler : MonoBehaviour
             return;
         }
 
-        SaveRegisterData();      // ✔ 保存注册信息
-        ShowDisclaimer();        // ✔ 显示免责声明
+        SaveRegisterData();
+        ShowDisclaimer();
     }
 
-    // 替代原来 CSV 写法 — 使用 SaveDataManager
     void SaveRegisterData()
     {
         var data = new SaveDataManager.RegisterData()

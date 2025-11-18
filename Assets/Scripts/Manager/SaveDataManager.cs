@@ -9,6 +9,9 @@ public class SaveDataManager : MonoBehaviour
 {
     public static SaveDataManager Instance;
 
+    // 当前玩家ID（仅保存已注册的玩家ID）
+    public string CurrentPlayerID { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -22,10 +25,6 @@ public class SaveDataManager : MonoBehaviour
         }
     }
 
-    // ============================================================
-    // 统一数据结构（你以后所有要保存的数据都可以放在这里）
-    // ============================================================
-    
     [Serializable]
     public class RegisterData
     {
@@ -51,10 +50,6 @@ public class SaveDataManager : MonoBehaviour
         public string RecordTime;
     }
 
-    // ============================================================
-    // 路径管理（Windows Documents）
-    // ============================================================
-    
     public string GetBasePath()
     {
         string doc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -77,23 +72,17 @@ public class SaveDataManager : MonoBehaviour
         return folder;
     }
 
-    // ============================================================
-    // 泛型 CSV 保存器
-    // ============================================================
-    
     private void SaveToCSV<T>(string folder, string fileName, T data)
     {
         string path = Path.Combine(folder, fileName);
         StringBuilder sb = new StringBuilder();
 
-        // 写表头
         if (!File.Exists(path))
         {
             string header = string.Join(",", typeof(T).GetFields().Select(f => f.Name));
             sb.AppendLine(header);
         }
 
-        // 写行数据
         string row = string.Join(",", typeof(T).GetFields().Select(f => f.GetValue(data)));
         sb.AppendLine(row);
 
@@ -101,12 +90,9 @@ public class SaveDataManager : MonoBehaviour
         Debug.Log($"[SaveDataManager] 数据已保存 → {path}");
     }
 
-    // ============================================================
-    // 提供友好接口（给 RegisterHandler / GameManager 使用）
-    // ============================================================
-
     public void SaveRegister(RegisterData data)
     {
+        CurrentPlayerID = data.PlayerID;   // 记录当前玩家
         string folder = GetPlayerFolder(data.PlayerID);
         SaveToCSV(folder, "Register.csv", data);
     }
