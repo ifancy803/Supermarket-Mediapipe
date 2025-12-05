@@ -1,11 +1,12 @@
 {
-    "name": "Mediapipe.Unity.Sample",
-    "rootNamespace": "",
+    "name": "ChaoShiPoseRecognition.Editor",
+    "rootNamespace": "ChaoShiPoseRecognition",
     "references": [
-        "GUID:04c4d86a70aa56c55a78c61f1ab1a56d",
         "GUID:e29471e1fb48b6ee6914cb8815fd9b9f"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
@@ -15,3 +16,4 @@
     "versionDefines": [],
     "noEngineReferences": false
 }
+

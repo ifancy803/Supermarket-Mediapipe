@@ -8,16 +8,28 @@ using System.Collections;
 using Mediapipe.Tasks.Vision.PoseLandmarker;
 using UnityEngine;
 using UnityEngine.Rendering;
+using ChaoShiPoseRecognition.Core;
 
 namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
 {
   public class PoseLandmarkerRunner : VisionTaskApiRunner<PoseLandmarker>
   {
     [SerializeField] private PoseLandmarkerResultAnnotationController _poseLandmarkerResultAnnotationController;
+    [Header("ChaoShi Integration")]
+    [SerializeField] private PoseResultForwarderRuntime _poseResultForwarder;
 
     private Experimental.TextureFramePool _textureFramePool;
 
     public readonly PoseLandmarkDetectionConfig config = new PoseLandmarkDetectionConfig();
+
+    private void Awake()
+    {
+      // 仅在主线程缓存一次，避免在回调线程中调用 FindFirstObjectByType
+      if (_poseResultForwarder == null)
+      {
+        _poseResultForwarder = FindFirstObjectByType<PoseResultForwarderRuntime>();
+      }
+    }
 
     public override void Stop()
     {
@@ -163,6 +175,12 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
     {
       _poseLandmarkerResultAnnotationController.DrawLater(result);
       DisposeAllMasks(result);
+
+      // 将 MediaPipe 结果转发给动作识别系统（使用预先缓存的引用）
+      if (_poseResultForwarder != null)
+      {
+        _poseResultForwarder.OnPoseResult(result, image, timestamp);
+      }
     }
 
     private void DisposeAllMasks(PoseLandmarkerResult result)

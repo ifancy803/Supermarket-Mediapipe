@@ -4,8 +4,8 @@ using Unity.Cinemachine;
 
 public class CameraManager : Singleton<CameraManager>
 {
-    public CinemachineVirtualCamera gameplayVCam;
-    public CinemachineVirtualCamera cutsceneVCam;
+    public CinemachineCamera gameplayVCam;
+    public CinemachineCamera cutsceneVCam;
     public Camera mainCamera;
 
     [ContextMenu("切换到过场")]
