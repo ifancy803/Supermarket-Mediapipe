@@ -1215,6 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bb2615109700749b026ff2d3bfeb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPauseUI: {fileID: 1256124739}
   RestartButton: {fileID: 1256124742}
   ResumeButton: {fileID: 1256124741}
   QuitButton: {fileID: 1256124740}
