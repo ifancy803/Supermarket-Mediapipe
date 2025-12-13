@@ -144,6 +144,26 @@ public class GameManager : Singleton<GameManager>
 
         updateStuffEvent.RaiseEvent(null, this);
     }
+    
+    [ContextMenu("开始新游戏")]
+    public void StartNewGame()
+    {
+        currentRoomIndex = 1;
+        score = 0;
+        updateDuration = rooms[currentRoomIndex - 1].updateGap;
+
+        gameStart = true;
+        isWin = false;
+        gameStartTime = 0f;
+        isCalculatingTime = false;
+
+        if (currentShelf != null)
+            Destroy(currentShelf);
+
+        currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab,new Vector3(-8,0,11.5f), Quaternion.identity);
+
+        updateStuffEvent.RaiseEvent(null, this);
+    }
 
     private void OnGUI()
     {
