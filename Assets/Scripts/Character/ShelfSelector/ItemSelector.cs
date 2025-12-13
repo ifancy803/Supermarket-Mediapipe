@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ItemSelector : MonoBehaviour
@@ -5,17 +6,24 @@ public class ItemSelector : MonoBehaviour
     [Tooltip("拖入你的选择器UI预制体")]
     public GameObject selectorUIPrefab; // 在Inspector面板中拖入预制体
 
+    public Canvas selectCanvas;
+
     [Tooltip("UI相对于3D物体的本地位置偏移")]
     public Vector3 positionOffset = new Vector3(0, 0, -3f); // 例如，在物品上方0.5米
 
     private GameObject currentSelectorUI;
+
+    private void Awake()
+    {
+        selectCanvas = GameObject.FindGameObjectWithTag("SelectorCanvas").GetComponent<Canvas>();
+    }
 
     void Start()
     {
         if (selectorUIPrefab != null)
         {
             // 实例化UI，并作为当前物体的子物体
-            currentSelectorUI = Instantiate(selectorUIPrefab, transform);
+            currentSelectorUI = Instantiate(selectorUIPrefab, selectCanvas.transform);
             // 设置UI的本地位置和旋转
             currentSelectorUI.transform.localPosition = positionOffset;
             currentSelectorUI.transform.localRotation = Quaternion.identity;
