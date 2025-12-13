@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Panel_PauseUI : MonoBehaviour
 {
+    public GameObject PanelPauseUI;
     public Button RestartButton;
     public Button ResumeButton;
     public Button QuitButton;
@@ -36,7 +37,7 @@ public class Panel_PauseUI : MonoBehaviour
     private void OnResumeClicked()
     {
         Time.timeScale = 1f;
-        gameObject.SetActive(false);
+        PanelPauseUI.SetActive(false);
     }
 
     /// <summary>
