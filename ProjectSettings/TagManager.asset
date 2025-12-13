@@ -7,7 +7,6 @@ TagManager:
   - Global Resource
   - InstantiatePoint
   - SelectorCanvas
-  - Selector
   layers:
   - Default
   - TransparentFX
