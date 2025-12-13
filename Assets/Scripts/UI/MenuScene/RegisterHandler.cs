@@ -7,6 +7,7 @@ using System;
 
 public class RegisterHandler : MonoBehaviour
 {
+    
     [Header("UI InputFields输入框")]
     public TMP_InputField playerIdInput;
     public TMP_InputField nameInput;
@@ -102,6 +103,7 @@ public class RegisterHandler : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
+        
         int timeLeft = countdownTime;
 
         while (timeLeft > 0)
