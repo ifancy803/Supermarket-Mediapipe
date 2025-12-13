@@ -9,7 +9,7 @@ public class ItemSelector : MonoBehaviour
     public Canvas selectCanvas;
 
     [Tooltip("UI相对于3D物体的本地位置偏移")]
-    public Vector3 positionOffset = new Vector3(0, 0.2f, 0.3f); // 例如，在物品上方0.5米
+    public Vector3 positionOffset = new Vector3(0, 0, -3f); // 例如，在物品上方0.5米
 
     private GameObject currentSelectorUI;
 
@@ -25,7 +25,7 @@ public class ItemSelector : MonoBehaviour
             // 实例化UI，并作为当前物体的子物体
             currentSelectorUI = Instantiate(selectorUIPrefab, selectCanvas.transform);
             // 设置UI的本地位置和旋转
-            currentSelectorUI.transform.localPosition = transform.position+positionOffset;
+            currentSelectorUI.transform.localPosition = positionOffset;
             currentSelectorUI.transform.localRotation = Quaternion.identity;
             // 初始设置为隐藏
             SetSelectorVisible(false);
@@ -35,10 +35,6 @@ public class ItemSelector : MonoBehaviour
     // 外部调用此方法来显示/隐藏选择器
     public void SetSelectorVisible(bool isVisible)
     {
-        foreach (var selector in GameObject.FindGameObjectsWithTag("Selector"))
-        {
-            selector.gameObject.SetActive(false);
-        }
         if (currentSelectorUI != null)
         {
             currentSelectorUI.SetActive(isVisible);
