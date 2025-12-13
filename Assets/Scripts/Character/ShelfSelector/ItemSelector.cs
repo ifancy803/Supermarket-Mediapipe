@@ -6,7 +6,7 @@ public class ItemSelector : MonoBehaviour
     public GameObject selectorUIPrefab; // 在Inspector面板中拖入预制体
 
     [Tooltip("UI相对于3D物体的本地位置偏移")]
-    public Vector3 positionOffset = new Vector3(0, 0.5f, 0); // 例如，在物品上方0.5米
+    public Vector3 positionOffset = new Vector3(0, 0, -3f); // 例如，在物品上方0.5米
 
     private GameObject currentSelectorUI;
 
@@ -40,17 +40,17 @@ public class ItemSelector : MonoBehaviour
     }
 
     // 如果需要每帧更新（例如需要始终面向摄像机），可以在LateUpdate中处理
-    void LateUpdate()
-    {
-        if (currentSelectorUI != null && currentSelectorUI.activeInHierarchy)
-        {
-            // 让选择器UI始终面向摄像机（Billboard效果）
-            if (Camera.main != null)
-                currentSelectorUI.transform.LookAt(
-                    currentSelectorUI.transform.position +
-                    Camera.main.transform.rotation * Vector3.forward,
-                    Camera.main.transform.rotation * Vector3.up
-                );
-        }
-    }
+    // void LateUpdate()
+    // {
+    //     if (currentSelectorUI != null && currentSelectorUI.activeInHierarchy)
+    //     {
+    //         // 让选择器UI始终面向摄像机（Billboard效果）
+    //         if (Camera.main != null)
+    //             currentSelectorUI.transform.LookAt(
+    //                 currentSelectorUI.transform.position +
+    //                 Camera.main.transform.rotation * Vector3.forward,
+    //                 Camera.main.transform.rotation * Vector3.up
+    //             );
+    //     }
+    // }
 }
