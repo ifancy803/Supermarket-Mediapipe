@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1735162239953058586}
+  - component: {fileID: 2430128440631437856}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: InstantiatePoint
@@ -31,6 +32,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2430128440631437856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118983594025441990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &1319784289455038688
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2783001476595989191}
+  - component: {fileID: 1816844245016407062}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: InstantiatePoint
@@ -62,6 +80,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816844245016407062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319784289455038688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &1781043140341848822
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96545902921342631}
+  - component: {fileID: 5954560051594597455}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: InstantiatePoint
@@ -93,6 +128,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5954560051594597455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781043140341848822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &2088646611435014917
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5906436945683504612}
+  - component: {fileID: 1203808086662043919}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: InstantiatePoint
@@ -124,6 +176,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1203808086662043919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088646611435014917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &4458349196680558628
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8564506322411193437}
+  - component: {fileID: 7177604661157510201}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: InstantiatePoint
@@ -155,6 +224,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7177604661157510201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458349196680558628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &6247928832335711888
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7948907753199948875}
-  - component: {fileID: 6372041949742930899}
+  - component: {fileID: 3313026242355752654}
   m_Layer: 0
   m_Name: Cube
   m_TagString: InstantiatePoint
@@ -187,7 +272,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6372041949742930899
+--- !u!114 &3313026242355752654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,7 +286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  positionOffset: {x: 0, y: 0, z: -3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &6403839924941213858
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4309090949752538795}
+  - component: {fileID: 1166878382713722140}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: InstantiatePoint
@@ -325,6 +412,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1166878382713722140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599140892577108771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &7357409545826908809
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2959644679161918286}
+  - component: {fileID: 7531884561221938650}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: InstantiatePoint
@@ -356,6 +460,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7531884561221938650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7357409545826908809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1 &8921317054970973567
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5267455746669027571}
+  - component: {fileID: 6324139866093137146}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: InstantiatePoint
@@ -387,6 +508,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1048985130168382778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6324139866093137146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921317054970973567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
+    type: 3}
+  selectCanvas: {fileID: 0}
+  positionOffset: {x: 0, y: 0.2, z: 0.3}
 --- !u!1001 &1868202394784919867
 PrefabInstance:
   m_ObjectHideFlags: 0
