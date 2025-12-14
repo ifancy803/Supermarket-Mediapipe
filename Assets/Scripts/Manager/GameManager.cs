@@ -145,7 +145,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab,new Vector3(-8,0,11.5f), Quaternion.identity);
-
+        
         updateStuffEvent.RaiseEvent(null, this);
     }
     

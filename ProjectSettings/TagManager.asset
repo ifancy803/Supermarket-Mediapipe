@@ -8,6 +8,7 @@ TagManager:
   - InstantiatePoint
   - SelectorCanvas
   - Selector
+  - Stuff
   layers:
   - Default
   - TransparentFX

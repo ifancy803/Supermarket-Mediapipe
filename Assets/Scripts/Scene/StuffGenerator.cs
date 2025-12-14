@@ -124,6 +124,8 @@ public class StuffGenerator : MonoBehaviour
         
         Debug.Log($"创建了 {distinctRows.Count} 行 x {distinctCols.Count} 列的二维数组");
         PrintGridInfo(); // 打印调试信息
+        
+
     }
 
     /// <summary>
