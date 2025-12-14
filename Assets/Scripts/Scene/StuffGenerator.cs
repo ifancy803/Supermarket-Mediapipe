@@ -367,6 +367,7 @@ public class StuffGenerator : MonoBehaviour
     public void UpdateStuff(object value)
     {
         SetUpAllStuff();
+        SelectorManager.Instance.UpdateSelectors();
     }
 }
 

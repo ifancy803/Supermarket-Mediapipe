@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class SelectorManager : Singleton<SelectorManager>
 {
-    public List<GameObject> selectors = new List<GameObject>();
+    public List<GameObject> selectors = new();
 
     public void UpdateSelectors()
     {
-        selectors?.Clear();
+        selectors.Clear();
         foreach (var selector in GameObject.FindGameObjectsWithTag("Stuff"))
         {
-            selectors.Add(selector.gameObject);
+            if(selector!=null)
+                selectors.Add(selector.gameObject);
         }
     }
 
     public void OnNewGameState()
     {
-        foreach (var selector in selectors.Where(selector => selector.name == "0,0"))
+        foreach (var selector in selectors.Where(selector => selector.name == "Shelf_[0,0]"))
         {
-            selector.GetComponent<ItemSelector>().SetSelectorVisible(true);
+            if(selector != null)
+                selector.GetComponent<ItemSelector>().SetSelectorVisible(true);
+            Debug.Log(111);
         }
     }
 }
