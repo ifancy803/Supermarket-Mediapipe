@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4371051635233989259}
-  - component: {fileID: 6217392904222434333}
+  - component: {fileID: 3601136204619689286}
   m_Layer: 0
   m_Name: Cube
   m_TagString: InstantiatePoint
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6217392904222434333
+--- !u!114 &3601136204619689286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1 &1831997298700858026
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2233500029212700260}
-  - component: {fileID: 1035389692751155429}
+  - component: {fileID: 4779214623386209260}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: InstantiatePoint
@@ -80,7 +80,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1035389692751155429
+--- !u!114 &4779214623386209260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1 &3708039910868739965
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6182459742078300077}
-  - component: {fileID: 3522684321714910218}
+  - component: {fileID: 6869319335632943286}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: InstantiatePoint
@@ -216,7 +216,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3522684321714910218
+--- !u!114 &6869319335632943286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1 &6650536876895003163
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369845645050460361}
-  - component: {fileID: 3779529543495986047}
+  - component: {fileID: 2028292664092800937}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: InstantiatePoint
@@ -264,7 +264,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3779529543495986047
+--- !u!114 &2028292664092800937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1 &7763704397067926113
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211767937486148027}
-  - component: {fileID: 2274589946065640043}
+  - component: {fileID: 5129703138337627032}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: InstantiatePoint
@@ -312,7 +312,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2274589946065640043
+--- !u!114 &5129703138337627032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,8 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1 &8117029078956950288
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1490710465355738554}
-  - component: {fileID: 2512971434914435326}
+  - component: {fileID: 911468754800406863}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: InstantiatePoint
@@ -360,7 +360,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2512971434914435326
+--- !u!114 &911468754800406863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorUIPrefab: {fileID: 7226429923201144881, guid: 238cc0f50ce3b404eb75fdc05bdc2d99,
     type: 3}
-  selectCanvas: {fileID: 0}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
+  uiScale: 1
 --- !u!1001 &8748325740606192130
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -48,8 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stuffData: {fileID: 0}
   stuffType: 0
-  stuffAmount: 0
-  stuffPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &-3994497449408421182
 Rigidbody:
   m_ObjectHideFlags: 0
