@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4371051635233989259}
-  - component: {fileID: 3601136204619689286}
+  - component: {fileID: 2530178770731543391}
   m_Layer: 0
   m_Name: Cube
   m_TagString: InstantiatePoint
@@ -32,14 +32,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3601136204619689286
+--- !u!114 &2530178770731543391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544867088880113392}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2233500029212700260}
-  - component: {fileID: 4779214623386209260}
+  - component: {fileID: 5089251127764329923}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: InstantiatePoint
@@ -80,14 +80,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4779214623386209260
+--- !u!114 &5089251127764329923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831997298700858026}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6182459742078300077}
-  - component: {fileID: 6869319335632943286}
+  - component: {fileID: 91267070733991466}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: InstantiatePoint
@@ -216,14 +216,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6869319335632943286
+--- !u!114 &91267070733991466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464754161213988288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369845645050460361}
-  - component: {fileID: 2028292664092800937}
+  - component: {fileID: 3909004523841058229}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: InstantiatePoint
@@ -264,14 +264,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2028292664092800937
+--- !u!114 &3909004523841058229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6650536876895003163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211767937486148027}
-  - component: {fileID: 5129703138337627032}
+  - component: {fileID: 6809721135594144857}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: InstantiatePoint
@@ -312,14 +312,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5129703138337627032
+--- !u!114 &6809721135594144857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7763704397067926113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 
@@ -337,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1490710465355738554}
-  - component: {fileID: 911468754800406863}
+  - component: {fileID: 5897572973577785576}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: InstantiatePoint
@@ -360,14 +360,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5269953210865199106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &911468754800406863
+--- !u!114 &5897572973577785576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117029078956950288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbc2380aa12a4740b07e22840a2fb36, type: 3}
   m_Name: 

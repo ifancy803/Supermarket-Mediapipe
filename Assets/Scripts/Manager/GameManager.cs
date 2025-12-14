@@ -136,15 +136,12 @@ public class GameManager : Singleton<GameManager>
         isWin = false;
         gameStartTime = 0f;
         isCalculatingTime = false;
-        
-        // foreach (var selector in GameObject.FindGameObjectsWithTag("Selector"))
-        // {
-        //     Destroy(selector.gameObject);
-        // }
 
         if (currentShelf != null)
-        {
             Destroy(currentShelf);
+        foreach (var selector in GameObject.FindGameObjectsWithTag("Selector"))
+        {
+            Destroy(selector.gameObject);
         }
 
         currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab,new Vector3(-8,0,11.5f), Quaternion.identity);
