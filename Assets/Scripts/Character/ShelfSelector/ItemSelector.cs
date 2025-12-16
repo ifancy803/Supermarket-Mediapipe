@@ -85,7 +85,7 @@ public class ItemSelector : MonoBehaviour
         }
         
         // 初始隐藏
-        SetSelectorVisible(false);
+        //SetSelectorVisible(false);
     }
     
     /// <summary>
@@ -225,10 +225,10 @@ public class ItemSelector : MonoBehaviour
             selectCanvas.worldCamera = Camera.main;
             
         // 如果UI已激活，实时更新位置
-        if (currentSelectorUI != null && currentSelectorUI.activeSelf)
-        {
-            UpdateUIPosition();
-        }
+        // if (currentSelectorUI != null && currentSelectorUI.activeSelf)
+        // {
+        //     UpdateUIPosition();
+        // }
     }
 
     void UpdateUIPosition()
@@ -263,8 +263,8 @@ public class ItemSelector : MonoBehaviour
             if (isVisible)
             {
                 // 更新UI位置和旋转
-                UpdateUIPosition();
-                FaceToCamera();
+                // UpdateUIPosition();
+                // FaceToCamera();
                 
                 // 调试信息
                 Debug.Log($"显示Selector: {currentSelectorUI.name} " +
