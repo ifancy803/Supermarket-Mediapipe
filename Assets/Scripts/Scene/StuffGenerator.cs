@@ -89,7 +89,8 @@ public class StuffGenerator : MonoBehaviour
         {
             var stuff = Instantiate(stuffPrefab, transform);
             
-            var currentStuffDataList = stuffDataList.FindAll(data => data.stuffType == stuffType);
+            //var currentStuffDataList = stuffDataList.FindAll(data => data.stuffType == stuffType);
+            var currentStuffDataList = stuffDataList;
             if (currentStuffDataList.Count > 0)
             {
                 var currentStuffData = currentStuffDataList[Random.Range(0, currentStuffDataList.Count)];

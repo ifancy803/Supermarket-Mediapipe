@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73378fd813b0ba41b83b0add4f1b035, type: 3}
   m_Name: "\u571F\u8C46"
   m_EditorClassIdentifier: 
-  stuffType: 0
-  stuffModel: {fileID: 4309598148338633508, guid: 0f720b1fb49f9f44485475341160f224, type: 3}
-  stuffPosition:
-    x: 0
-    y: 0
-    z: 0
-  stuffAmount: 1
+  stuffType: 1
+  stuffModel: {fileID: 4309598148338633508, guid: 0f720b1fb49f9f44485475341160f224,
+    type: 3}

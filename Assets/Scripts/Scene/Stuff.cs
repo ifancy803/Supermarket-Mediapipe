@@ -17,20 +17,22 @@ public class Stuff : MonoBehaviour
         transform.position = stuffPosition;
         Instantiate(stuffData.stuffModel, transform);
 
-        stuffSpecies = stuffType switch
-        {
-            StuffType.水果 => StaticTools.GetRandomEnumValue<水果>(),
-            StuffType.玩具 => StaticTools.GetRandomEnumValue<玩具>(),
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        // stuffSpecies = stuffType switch
+        // {
+        //     StuffType.水果 => StaticTools.GetRandomEnumValue<水果>(),
+        //     StuffType.玩具 => StaticTools.GetRandomEnumValue<玩具>(),
+        //     _ => throw new ArgumentOutOfRangeException()
+        // };
+
+        //tuffType = StaticTools.GetRandomEnumValue<StuffType>();
         stuffData.stuffSpecies = stuffSpecies;
     }
 }
 
 public enum StuffType
 {
-    水果,
-    玩具,
+    苹果,
+    土豆
 }
 
 public enum 水果

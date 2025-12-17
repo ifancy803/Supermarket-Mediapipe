@@ -10,6 +10,10 @@ public class SelectorManager : Singleton<SelectorManager>
     private int currentRow = 0;
     private int currentCol = 0;
     
+    // 新增：得分/扣分事件（可选）
+    public delegate void ScoreChangedHandler(int changeAmount, bool isCorrect, string message);
+    public event ScoreChangedHandler OnScoreChanged;
+    
     // 引用StuffGenerator以获取二维数组
     private StuffGenerator stuffGenerator;
     
@@ -33,41 +37,343 @@ public class SelectorManager : Singleton<SelectorManager>
         // 上键
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            inputHandled = MoveSelector(1, 0); // 向上移动（行-1）
+            inputHandled = MoveSelector(1, 0); 
         }
         // 下键
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            inputHandled = MoveSelector(-1, 0); // 向下移动（行+1）
+            inputHandled = MoveSelector(-1, 0); 
         }
         // 左键
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            inputHandled = MoveSelector(0, -1); // 向左移动（列-1）
+            inputHandled = MoveSelector(0, -1); 
         }
         // 右键
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            inputHandled = MoveSelector(0, 1); // 向右移动（列+1）
+            inputHandled = MoveSelector(0, 1); 
+        }
+        // Enter键 - 销毁当前选中的物品并加分
+        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            CheckAndDestroyCurrentShelf();
         }
         
-        // 数字键选择
-        // if (Input.GetKeyDown(KeyCode.Alpha1))
-        // {
-        //     inputHandled = SelectSelector(0, 0);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha2))
-        // {
-        //     inputHandled = SelectSelector(0, 1);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha3))
-        // {
-        //     inputHandled = SelectSelector(1, 0);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha4))
-        // {
-        //     inputHandled = SelectSelector(1, 1);
-        // }
+    }
+    
+        /// <summary>
+    /// 检查并销毁当前选中的架子，根据类型加减分
+    /// </summary>
+    private void CheckAndDestroyCurrentShelf()
+    {
+        if (currentShelf == null)
+        {
+            Debug.Log("当前没有选中的架子");
+            ShowMessage("未选中任何架子", Color.yellow);
+            return;
+        }
+        
+        // 获取当前架子的Stuff组件
+        Stuff currentStuff = currentShelf.GetComponent<Stuff>();
+        if (currentStuff == null)
+        {
+            Debug.LogWarning("当前选中的架子没有Stuff组件");
+            ShowMessage("错误：该物品无效", Color.red);
+            return;
+        }
+        
+        // 获取目标枚举类型
+        if (GameManager.Instance == null || 
+            GameManager.Instance.rooms == null || 
+            GameManager.Instance.currentRoomIndex < 1 ||
+            GameManager.Instance.currentRoomIndex > GameManager.Instance.rooms.Count)
+        {
+            Debug.LogError("GameManager或关卡数据无效");
+            return;
+        }
+        
+        Room currentRoom = GameManager.Instance.rooms[GameManager.Instance.currentRoomIndex - 1];
+        System.Enum aimEnum = currentRoom.GetAimEnumType();
+        
+        if (aimEnum == null)
+        {
+            Debug.LogError("无法获取目标枚举类型");
+            ShowMessage("错误：目标类型未设置", Color.red);
+            return;
+        }
+        
+        // 比较枚举类型
+        System.Enum currentEnum = currentStuff.stuffType as System.Enum;
+        bool isCorrect = currentEnum != null && currentEnum.Equals(aimEnum);
+        
+        // 计算分数变化
+        int scoreChange = isCorrect ? 1 : -1;
+        int newScore = Mathf.Max(0, GameManager.Instance.score + scoreChange);
+        
+        // 更新分数
+        GameManager.Instance.score = newScore;
+        
+        // 显示提示信息
+        string itemName = currentEnum?.ToString() ?? "未知类型";
+        Debug.Log(currentEnum?.ToString());
+        
+        string aimName = aimEnum.ToString();
+        string message = isCorrect ? 
+            $"正确！{itemName} +1分" : 
+            $"错误！{itemName} ≠ {aimName} -1分";
+        
+        Color messageColor = isCorrect ? Color.green : Color.red;
+        ShowMessage(message, messageColor);
+        
+        Debug.Log($"{message}，当前分数: {GameManager.Instance.score}");
+        
+        // 触发得分事件
+        OnScoreChanged?.Invoke(scoreChange, isCorrect, message);
+        
+        // 销毁当前架子
+        DestroyCurrentShelf();
+    }
+    
+    /// <summary>
+    /// 销毁当前选中的架子
+    /// </summary>
+    private void DestroyCurrentShelf()
+    {
+        if (currentShelf == null) return;
+        
+        // 从二维数组中获取行列索引
+        if (TryGetCurrentGridPosition(out int row, out int col))
+        {
+            // 从二维数组中移除引用
+            if (stuffGenerator != null && stuffGenerator.currentStuffGrid != null)
+            {
+                if (row >= 0 && row < stuffGenerator.currentStuffGrid.GetLength(0) &&
+                    col >= 0 && col < stuffGenerator.currentStuffGrid.GetLength(1))
+                {
+                    // 销毁游戏对象
+                    Debug.Log($"销毁架子 [{row},{col}]");
+                    Destroy(currentShelf);
+                    
+                    // 清空二维数组中的引用
+                    stuffGenerator.currentStuffGrid[row, col] = null;
+                    
+                    // 从列表中移除
+                    if (stuffGenerator.currentStuffList.Contains(currentShelf))
+                    {
+                        stuffGenerator.currentStuffList.Remove(currentShelf);
+                    }
+                }
+            }
+        }
+        
+        // 自动选择下一个可用的架子
+        if (TryGetCurrentGridPosition(out int currentRow, out int currentCol))
+        {
+            AutoSelectNextAvailableShelf(currentRow, currentCol);
+        }
+        else
+        {
+            // 如果无法获取当前位置，尝试从(0,0)开始查找
+            AutoSelectNextAvailableShelf(0, 0);
+        }
+    }
+    
+    /// <summary>
+    /// 显示提示消息（可以扩展为UI显示）
+    /// </summary>
+    private void ShowMessage(string message, Color color)
+    {
+        // 这里可以替换为你自己的UI显示逻辑
+        Debug.Log($"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{message}</color>");
+        
+        // 示例：如果你有UI管理器，可以这样调用
+        // UIManager.Instance.ShowMessage(message, color, 2f);
+    }
+    
+    /// <summary>
+    /// 获取当前选中架子的网格位置
+    /// </summary>
+    private bool TryGetCurrentGridPosition(out int row, out int col)
+    {
+        row = -1;
+        col = -1;
+        
+        if (currentShelf == null)
+            return false;
+            
+        // 方法1：从ShelfInfo组件获取
+        var shelfInfo = currentShelf.GetComponent<ShelfInfo>();
+        if (shelfInfo != null)
+        {
+            row = shelfInfo.Row;
+            col = shelfInfo.Col;
+            return true;
+        }
+        
+        // 方法2：从名称解析
+        string name = currentShelf.name;
+        if (name.Contains("[") && name.Contains(",") && name.Contains("]"))
+        {
+            try
+            {
+                int start = name.IndexOf("[") + 1;
+                int end = name.IndexOf("]");
+                string indexStr = name.Substring(start, end - start);
+                string[] parts = indexStr.Split(',');
+                
+                if (parts.Length == 2 && 
+                    int.TryParse(parts[0], out row) && 
+                    int.TryParse(parts[1], out col))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                // 名称解析失败
+            }
+        }
+        
+        // 方法3：遍历二维数组查找
+        if (stuffGenerator != null && stuffGenerator.currentStuffGrid != null)
+        {
+            for (int r = 0; r < stuffGenerator.currentStuffGrid.GetLength(0); r++)
+            {
+                for (int c = 0; c < stuffGenerator.currentStuffGrid.GetLength(1); c++)
+                {
+                    if (stuffGenerator.currentStuffGrid[r, c] == currentShelf)
+                    {
+                        row = r;
+                        col = c;
+                        return true;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    /// <summary>
+    /// 自动选择下一个可用的架子
+    /// </summary>
+    private void AutoSelectNextAvailableShelf(int destroyedRow, int destroyedCol)
+    {
+        if (stuffGenerator == null || stuffGenerator.currentStuffGrid == null)
+            return;
+        
+        int rows = stuffGenerator.currentStuffGrid.GetLength(0);
+        int cols = stuffGenerator.currentStuffGrid.GetLength(1);
+        
+        // 尝试先选择右侧的架子
+        for (int col = destroyedCol + 1; col < cols; col++)
+        {
+            if (stuffGenerator.currentStuffGrid[destroyedRow, col] != null)
+            {
+                SelectSelector(destroyedRow, col);
+                return;
+            }
+        }
+        
+        // 尝试选择左侧的架子
+        for (int col = destroyedCol - 1; col >= 0; col--)
+        {
+            if (stuffGenerator.currentStuffGrid[destroyedRow, col] != null)
+            {
+                SelectSelector(destroyedRow, col);
+                return;
+            }
+        }
+        
+        // 尝试选择下方的架子
+        for (int row = destroyedRow + 1; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                if (stuffGenerator.currentStuffGrid[row, col] != null)
+                {
+                    SelectSelector(row, col);
+                    return;
+                }
+            }
+        }
+        
+        // 尝试选择上方的架子
+        for (int row = destroyedRow - 1; row >= 0; row--)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                if (stuffGenerator.currentStuffGrid[row, col] != null)
+                {
+                    SelectSelector(row, col);
+                    return;
+                }
+            }
+        }
+        
+        // 如果没有找到其他架子，清空当前选中
+        currentShelf = null;
+        currentRow = -1;
+        currentCol = -1;
+        Debug.Log("所有架子都已被销毁");
+        
+        // 可以触发游戏结束或关卡完成事件
+        // GameManager.Instance.CheckLevelComplete();
+    }
+    
+    /// <summary>
+    /// 销毁当前选中的架子并增加分数
+    /// </summary>
+    private void DestroyCurrentShelfAndAddScore()
+    {
+        if (currentShelf == null)
+        {
+            Debug.Log("当前没有选中的架子");
+            return;
+        }
+        
+        // 从二维数组中获取行列索引
+        if (TryGetCurrentGridPosition(out int row, out int col))
+        {
+            // 从二维数组中移除引用
+            if (stuffGenerator != null && stuffGenerator.currentStuffGrid != null)
+            {
+                if (row >= 0 && row < stuffGenerator.currentStuffGrid.GetLength(0) &&
+                    col >= 0 && col < stuffGenerator.currentStuffGrid.GetLength(1))
+                {
+                    // 销毁游戏对象
+                    if (currentShelf != null)
+                    {
+                        Debug.Log($"销毁架子 [{row},{col}]");
+                        Destroy(currentShelf);
+                        
+                        // 清空二维数组中的引用
+                        stuffGenerator.currentStuffGrid[row, col] = null;
+                        
+                        // 从列表中移除
+                        if (stuffGenerator.currentStuffList.Contains(currentShelf))
+                        {
+                            stuffGenerator.currentStuffList.Remove(currentShelf);
+                        }
+                    }
+                    
+                    // 增加分数
+                    GameManager.Instance.score += 1;
+                    Debug.Log($"分数增加，当前分数: {GameManager.Instance.score}");
+                    
+                    // 自动选择下一个可用的架子
+                    AutoSelectNextAvailableShelf(row, col);
+                    
+                    //TODO: 触发物品更新事件（如果需要）
+                    //GameManager.Instance.updateStuffEvent?.RaiseEvent(null, GameManager.Instance);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("无法获取当前架子的网格位置");
+        }
     }
     
     /// <summary>
@@ -132,7 +438,7 @@ public class SelectorManager : Singleton<SelectorManager>
         // 显示新的选择器
         itemSelector.SetSelectorVisible(true);
         
-        Debug.Log($"已选择位置[{currentRow},{currentCol}]");
+        //Debug.Log($"已选择位置[{currentRow},{currentCol}]");
         
         return true;
     }
@@ -223,7 +529,7 @@ public class SelectorManager : Singleton<SelectorManager>
         
             // 初始选择第一个Selector
             SelectSelector(currentRow, currentCol);
-        //
+        
         // GameObject.Find("Shelf_[0,0]").GetComponent<ItemSelector>().SetSelectorVisible(true);
     }
     

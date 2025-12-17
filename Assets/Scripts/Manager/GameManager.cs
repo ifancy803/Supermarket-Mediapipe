@@ -39,6 +39,21 @@ public class GameManager : Singleton<GameManager>
         {
             CurrentGameWin();
         }
+        
+        // 更新目标显示
+        UpdateTargetDisplay();
+    }
+    
+    /// <summary>
+    /// 更新目标显示
+    /// </summary>
+    private void UpdateTargetDisplay()
+    {
+        if (currentRoomIndex > 0 && currentRoomIndex <= rooms.Count)
+        {
+            Room currentRoom = rooms[currentRoomIndex - 1];
+            string aimDescription = currentRoom.GetAimDescription();
+        }
     }
 
     private void OnEnable()
@@ -156,6 +171,9 @@ public class GameManager : Singleton<GameManager>
         updateStuffEvent.RaiseEvent(null, this);
         yield return new WaitForSeconds(0.01f);
         SelectorManager.Instance.OnNewGameState();
+        
+        // 更新目标显示
+        UpdateTargetDisplay();
     }
     
     [ContextMenu("开始新游戏")]
@@ -176,6 +194,9 @@ public class GameManager : Singleton<GameManager>
         currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab,new Vector3(-8,0,11.5f), Quaternion.identity);
 
         updateStuffEvent.RaiseEvent(null, this);
+        
+        // 更新目标显示
+        UpdateTargetDisplay();
     }
 
     private void OnGUI()
@@ -199,4 +220,34 @@ public class Room
     public int winScore;
     public float updateGap;
     public GameObject shelfPrefab;
-}
+    public GameObject aimStuff;
+    
+    // 新增：获取目标枚举类型
+    public System.Enum GetAimEnumType()
+    {
+        if (aimStuff == null)
+        {
+            Debug.LogError($"Room {id} 的 aimStuff 未设置！");
+            return null;
+        }
+        
+        // 从aimStuff获取Stuff组件
+        Stuff aimStuffComponent = aimStuff.GetComponent<Stuff>();
+        if (aimStuffComponent == null)
+        {
+            Debug.LogError($"aimStuff 没有找到 Stuff 组件！");
+            return null;
+        }
+        
+        return aimStuffComponent.stuffType as System.Enum;
+    }
+    
+    // 新增：获取目标类型描述
+    public string GetAimDescription()
+    {
+        var aimEnum = GetAimEnumType();
+        if (aimEnum == null) return "未设置目标";
+        
+        return aimEnum.ToString();
+    }
+}   
