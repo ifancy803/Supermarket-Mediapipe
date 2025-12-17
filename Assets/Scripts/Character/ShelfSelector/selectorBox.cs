@@ -6,6 +6,6 @@ public class selectorBox : MonoBehaviour
     private void Start()
     {
         gameObject.SetActive(false);
-        SelectorManager.Instance.OnNewGameState();
+        // SelectorManager.Instance.OnNewGameState();
     }
 }

@@ -144,9 +144,17 @@ public class GameManager : Singleton<GameManager>
             Destroy(selector.gameObject);
         }
 
+
+        StartCoroutine(OnNewGameStart());
+    }
+
+    IEnumerator OnNewGameStart()
+    {
+        //TODO:生命周期相关问题修改与维护
+        yield return new WaitForSeconds(0.01f);
         currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab,new Vector3(-8,0,11.5f), Quaternion.identity);
-        
         updateStuffEvent.RaiseEvent(null, this);
+        yield return new WaitForSeconds(0.01f);
         SelectorManager.Instance.OnNewGameState();
     }
     

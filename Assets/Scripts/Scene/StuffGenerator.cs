@@ -122,7 +122,6 @@ public class StuffGenerator : MonoBehaviour
             }
         }
         
-        Debug.Log($"创建了 {distinctRows.Count} 行 x {distinctCols.Count} 列的二维数组");
         PrintGridInfo(); // 打印调试信息
         
 
@@ -273,7 +272,6 @@ public class StuffGenerator : MonoBehaviour
         int rows = currentStuffGrid.GetLength(0);
         int cols = currentStuffGrid.GetLength(1);
         
-        Debug.Log($"=== 架子二维数组 ({rows}x{cols}) ===");
         
         for (int row = 0; row < rows; row++)
         {
@@ -290,9 +288,7 @@ public class StuffGenerator : MonoBehaviour
                 }
                 if (col < cols - 1) rowInfo += " ";
             }
-            Debug.Log(rowInfo);
         }
-        Debug.Log("================================");
     }
 
     /// <summary>

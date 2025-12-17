@@ -5,7 +5,8 @@ using UnityEngine;
 public class SelectorManager : Singleton<SelectorManager>
 {
     public List<GameObject> selectors = new();
-
+    public GameObject currentShelf = null;
+    
     public void UpdateSelectors()
     {
         selectors.Clear();
@@ -15,14 +16,8 @@ public class SelectorManager : Singleton<SelectorManager>
                 selectors.Add(selector.gameObject);
         }
     }
-
     public void OnNewGameState()
     {
-        foreach (var selector in selectors.Where(selector => selector.name == "Shelf_[0,0]"))
-        {
-            if(selector != null)
-                selector.GetComponent<ItemSelector>().SetSelectorVisible(true);
-            Debug.Log(111);
-        }
+        GameObject.Find("Shelf_[0,0]").GetComponent<ItemSelector>().SetSelectorVisible(true);
     }
 }

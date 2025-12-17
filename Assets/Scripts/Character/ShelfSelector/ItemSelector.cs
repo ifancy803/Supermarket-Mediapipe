@@ -12,7 +12,7 @@ public class ItemSelector : MonoBehaviour
     [Tooltip("UI大小缩放")]
     public float uiScale = 0.1f; // World Canvas 通常需要缩放
 
-    private GameObject currentSelectorUI;
+    public GameObject currentSelectorUI;
     private Canvas selectCanvas;
     private RectTransform uiRectTransform;
     
@@ -80,8 +80,6 @@ public class ItemSelector : MonoBehaviour
             
             // 设置UI初始属性
             InitializeUI();
-            
-            Debug.Log($"创建新的Selector: {selectorName}");
         }
         
         // 初始隐藏
@@ -202,7 +200,6 @@ public class ItemSelector : MonoBehaviour
         if (currentSelectorUI != null)
         {
             currentSelectorUI.name = $"{shelfRow},{shelfCol}";
-            Debug.Log($"设置Selector名称: {currentSelectorUI.name}");
         }
     }
 
