@@ -356,6 +356,32 @@ public class ItemSelector : MonoBehaviour
     //         }
     //     }
     // }
+    
+    /// <summary>
+    /// 检查是否是当前选中的Selector
+    /// </summary>
+    public bool IsCurrentlySelected()
+    {
+        if (SelectorManager.Instance == null)
+            return false;
+        
+        Vector2Int currentPos = SelectorManager.Instance.GetCurrentPosition();
+        return shelfRow == currentPos.x && shelfCol == currentPos.y;
+    }
+
+    /// <summary>
+    /// 选中这个Selector（通过外部调用）
+    /// </summary>
+    public void SelectThis()
+    {
+        SetSelectorVisible(true);
+    
+        // 通知SelectorManager更新当前选中位置
+        if (SelectorManager.Instance != null)
+        {
+            SelectorManager.Instance.ForceSelectSelector(shelfRow, shelfCol);
+        }
+    }
 
     // 在编辑器中可视化偏移点（可选）
     void OnDrawGizmosSelected()
