@@ -31,9 +31,9 @@ public class SelectorManager : Singleton<SelectorManager>
             return;
             
         bool inputHandled = false;
-        
-        //TODO:上下左右位移根据视觉修改
-        
+
+        #region 按键控制
+
         // 上键
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -59,8 +59,53 @@ public class SelectorManager : Singleton<SelectorManager>
         {
             CheckAndDestroyCurrentShelf();
         }
-        
+
+        #endregion
+
+        #region 姿势识别
+
+        // 上键
+        if (MediapipeUp())
+        {
+            inputHandled = MoveSelector(1, 0); 
+        }
+        // 下键
+        else if (MediapipeDown())
+        {
+            inputHandled = MoveSelector(-1, 0); 
+        }
+        // 左键
+        else if (MediapipeLeft())
+        {
+            inputHandled = MoveSelector(0, -1); 
+        }
+        // 右键
+        else if (MediapipeRight())
+        {
+            inputHandled = MoveSelector(0, 1); 
+        }
+        // Enter键 - 销毁当前选中的物品并加分
+        else if (MediapipeAffirm())
+        {
+            CheckAndDestroyCurrentShelf();
+        }
+
+        #endregion
     }
+
+    
+    //TODO:姿态识别调用方法
+    public bool MediapipeUp() => true;
+    
+    public bool MediapipeDown() => true;
+    
+    public bool MediapipeLeft() => true;
+    
+    public bool MediapipeRight() => true;
+    
+    public bool MediapipeAffirm() => true;
+    
+
     
         /// <summary>
     /// 检查并销毁当前选中的架子，根据类型加减分
