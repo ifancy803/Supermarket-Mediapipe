@@ -365,6 +365,7 @@ public class StuffGenerator : MonoBehaviour
     {
         SetUpAllStuff();
         SelectorManager.Instance.UpdateSelectors();
+        SelectorManager.Instance.AutoSelectNextAvailableShelf(0,0);
     }
 }
 

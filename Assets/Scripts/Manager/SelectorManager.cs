@@ -7,8 +7,8 @@ public class SelectorManager : Singleton<SelectorManager>
     public GameObject currentShelf = null;
     
     // 当前选中的行列
-    private int currentRow = 0;
-    private int currentCol = 0;
+    public int currentRow = 0;
+    public int currentCol = 0;
     
     // 新增：得分/扣分事件（可选）
     public delegate void ScoreChangedHandler(int changeAmount, bool isCorrect, string message);
@@ -31,9 +31,9 @@ public class SelectorManager : Singleton<SelectorManager>
             return;
             
         bool inputHandled = false;
-        
-        //TODO:上下左右位移根据视觉修改
-        
+
+        #region 按键控制
+
         // 上键
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -59,8 +59,45 @@ public class SelectorManager : Singleton<SelectorManager>
         {
             CheckAndDestroyCurrentShelf();
         }
-        
+
+        #endregion
+
+        //TODO:姿态识别方法接入
+        #region 姿势识别
+
+        // // 上键
+        // if (MediapipeUp())
+        // {
+        //     inputHandled = MoveSelector(1, 0); 
+        // }
+        // // 下键
+        // else if (MediapipeDown())
+        // {
+        //     inputHandled = MoveSelector(-1, 0); 
+        // }
+        // // 左键
+        // else if (MediapipeLeft())
+        // {
+        //     inputHandled = MoveSelector(0, -1); 
+        // }
+        // // 右键
+        // else if (MediapipeRight())
+        // {
+        //     inputHandled = MoveSelector(0, 1); 
+        // }
+        // // Enter键 - 销毁当前选中的物品并加分
+        // else if (MediapipeAffirm())
+        // {
+        //     CheckAndDestroyCurrentShelf();
+        // }
+
+        #endregion
     }
+
+    
+
+    
+
     
         /// <summary>
     /// 检查并销毁当前选中的架子，根据类型加减分
@@ -258,7 +295,7 @@ public class SelectorManager : Singleton<SelectorManager>
     /// <summary>
     /// 自动选择下一个可用的架子
     /// </summary>
-    private void AutoSelectNextAvailableShelf(int destroyedRow, int destroyedCol)
+    public void AutoSelectNextAvailableShelf(int destroyedRow, int destroyedCol)
     {
         if (stuffGenerator == null || stuffGenerator.currentStuffGrid == null)
             return;

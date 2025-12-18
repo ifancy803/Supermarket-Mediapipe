@@ -42,6 +42,7 @@ public class GameManager : Singleton<GameManager>
         
         // 更新目标显示
         UpdateTargetDisplay();
+
     }
     
     /// <summary>
@@ -54,6 +55,7 @@ public class GameManager : Singleton<GameManager>
             Room currentRoom = rooms[currentRoomIndex - 1];
             string aimDescription = currentRoom.GetAimDescription();
         }
+        
     }
 
     private void OnEnable()

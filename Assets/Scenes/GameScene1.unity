@@ -1349,22 +1349,78 @@ MonoBehaviour:
   currentRoomIndex: 0
   rooms:
   - id: 1
-    winScore: 8
-    updateGap: 3
-    shelfPrefab: {fileID: 3708039910868739965, guid: 9af91606466e50b45a12a7dd02a87163,
+    winScore: 6
+    updateGap: 10
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
       type: 3}
     aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
       type: 3}
   - id: 2
-    winScore: 12
-    updateGap: 4
+    winScore: 8
+    updateGap: 10
     shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
       type: 3}
-    aimStuff: {fileID: 8458388131903513461, guid: 88aed2d62980e114792e51d41a1b83a3,
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
       type: 3}
   - id: 3
+    winScore: 10
+    updateGap: 10
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 4
+    winScore: 8
+    updateGap: 8
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 5
+    winScore: 10
+    updateGap: 8
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 6
     winScore: 12
-    updateGap: 4
+    updateGap: 6
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 7
+    winScore: 14
+    updateGap: 6
+    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 8
+    winScore: 12
+    updateGap: 8
+    shelfPrefab: {fileID: 1888842504919553180, guid: 67bebc25fde05b34fb66cc9e1a3ef1cb,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 9
+    winScore: 14
+    updateGap: 8
+    shelfPrefab: {fileID: 1888842504919553180, guid: 67bebc25fde05b34fb66cc9e1a3ef1cb,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 10
+    winScore: 16
+    updateGap: 6
+    shelfPrefab: {fileID: 1888842504919553180, guid: 67bebc25fde05b34fb66cc9e1a3ef1cb,
+      type: 3}
+    aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
+      type: 3}
+  - id: 10
+    winScore: 16
+    updateGap: 6
     shelfPrefab: {fileID: 1888842504919553180, guid: 67bebc25fde05b34fb66cc9e1a3ef1cb,
       type: 3}
     aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
