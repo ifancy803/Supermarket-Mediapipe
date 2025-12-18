@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mediapipe.Unity.Sample.PoseLandmarkDetection;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -70,6 +71,7 @@ public class GameManager : Singleton<GameManager>
     {
         currentShelf = Instantiate(rooms[currentRoomIndex - 1].shelfPrefab);
         StartNewStage();
+        SelectorManager.Instance._poseRunner = Object.FindAnyObjectByType<PoseLandmarkerRunner>();
     }
 
     private IEnumerator TimerCoroutine(float duration)

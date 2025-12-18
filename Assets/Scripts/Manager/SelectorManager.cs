@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using Mediapipe.Unity.Sample.PoseLandmarkDetection;
 using UnityEngine;
+using Mediapipe.Unity.Sample.PoseLandmarkDetection;
 
 public class SelectorManager : Singleton<SelectorManager>
 {
     public List<GameObject> selectors = new();
     public GameObject currentShelf = null;
+    public PoseLandmarkerRunner _poseRunner;
     
     // 当前选中的行列
     public int currentRow = 0;
@@ -65,34 +68,39 @@ public class SelectorManager : Singleton<SelectorManager>
         //TODO:姿态识别方法接入
         #region 姿势识别
 
-        // // 上键
-        // if (MediapipeUp())
-        // {
-        //     inputHandled = MoveSelector(1, 0); 
-        // }
-        // // 下键
-        // else if (MediapipeDown())
-        // {
-        //     inputHandled = MoveSelector(-1, 0); 
-        // }
-        // // 左键
-        // else if (MediapipeLeft())
-        // {
-        //     inputHandled = MoveSelector(0, -1); 
-        // }
-        // // 右键
-        // else if (MediapipeRight())
-        // {
-        //     inputHandled = MoveSelector(0, 1); 
-        // }
-        // // Enter键 - 销毁当前选中的物品并加分
-        // else if (MediapipeAffirm())
-        // {
-        //     CheckAndDestroyCurrentShelf();
-        // }
+        if (_poseRunner != null)
+        {
+            // 上键
+            if (_poseRunner.IsForward)
+            {
+                inputHandled = MoveSelector(1, 0); 
+            }
+            // 下键
+            else if (_poseRunner.IsBackward)
+            {
+                inputHandled = MoveSelector(-1, 0); 
+            }
+            // 左键
+            else if (_poseRunner.IsLeft)
+            {
+                inputHandled = MoveSelector(0, -1); 
+            }
+            // 右键
+            else if (_poseRunner.IsRight)
+            {
+                inputHandled = MoveSelector(0, 1); 
+            }
+            // Enter键 - 销毁当前选中的物品并加分
+            else if (_poseRunner.IsHandsClasped)
+            {
+                CheckAndDestroyCurrentShelf();
+            }
+        }
 
         #endregion
     }
+    
+    
 
     
 
