@@ -15,13 +15,50 @@ MonoBehaviour:
   m_GroupName: Scene
   m_GUID: 6386981c5c6fe204a8d361c5110b81ab
   m_SerializeEntries:
+  - m_GUID: 20354aa93e84faf4894da8d0ac87449e
+    m_Address: "Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Prefabs/apple_\u7D2B.prefab"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26ee06aaa9cbd784a94f73e259daade4
+    m_Address: Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Materials/supermarket_lite.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 467c5aa26f767114eb4b3fe8a7e97d60
     m_Address: MenuScene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77e40ca717ad8bc4891e7262d0c3f760
+    m_Address: Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Prefabs/apple_red.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8504b517f1c331b40aa98587b2bfeacf
+    m_Address: "Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Materials/supermarket_lite
+      \u7D2B.mat"
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c5cbfc6a63adcd419c8860ac8fcef39
     m_Address: Persistent
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa12955d6d536064bbe0e86fc1bae53a
+    m_Address: Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Materials/overview_floor.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abbf234617205844db11a1e767893e4f
+    m_Address: Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Prefabs/apple_green.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3240d69a318b0d4a88acff8903bb488
+    m_Address: Assets/Resources_moved/ArtRes/Cute Supermarket Lite/Materials/supermarket_lite
+      Red.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
