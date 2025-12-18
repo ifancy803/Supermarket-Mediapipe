@@ -48,6 +48,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1319784289455038688
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1781043140341848822
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +146,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &2088646611435014917
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +195,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &4458349196680558628
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +244,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &6247928832335711888
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +293,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &6403839924941213858
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +356,8 @@ MonoBehaviour:
   stuffDataList:
   - {fileID: 11400000, guid: d05486afeb2aa354eac29ddecf7f6abb, type: 2}
   - {fileID: 11400000, guid: 6bc588911225bff458462eb2f0cb8af9, type: 2}
+  - {fileID: 11400000, guid: 0bdfcf5f014f7f84caa35d82eb9fa8e2, type: 2}
+  - {fileID: 11400000, guid: bd857270f57c5b34dadffc8e5c122841, type: 2}
   stuffPositionList: []
   currentStuffList: []
 --- !u!114 &7753560812990526870
@@ -428,6 +436,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &7357409545826908809
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +485,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8921317054970973567
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +534,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1001 &1868202394784919867
 PrefabInstance:
   m_ObjectHideFlags: 0

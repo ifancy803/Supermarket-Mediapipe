@@ -7,8 +7,8 @@ public class SelectorManager : Singleton<SelectorManager>
     public GameObject currentShelf = null;
     
     // 当前选中的行列
-    private int currentRow = 0;
-    private int currentCol = 0;
+    public int currentRow = 0;
+    public int currentCol = 0;
     
     // 新增：得分/扣分事件（可选）
     public delegate void ScoreChangedHandler(int changeAmount, bool isCorrect, string message);
@@ -295,7 +295,7 @@ public class SelectorManager : Singleton<SelectorManager>
     /// <summary>
     /// 自动选择下一个可用的架子
     /// </summary>
-    private void AutoSelectNextAvailableShelf(int destroyedRow, int destroyedCol)
+    public void AutoSelectNextAvailableShelf(int destroyedRow, int destroyedCol)
     {
         if (stuffGenerator == null || stuffGenerator.currentStuffGrid == null)
             return;
