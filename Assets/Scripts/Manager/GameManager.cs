@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public List<Room> rooms = new();
     public GameObject currentShelf = null;
 
-    [Header("计时器相关")]
+    [Header("计时器相关")] public bool isStop = true;
     public bool gameStart = false;
     public bool isCalculatingTime = false;
     public float updateDuration = 3f;
@@ -33,12 +33,19 @@ public class GameManager : Singleton<GameManager>
         if (!isCalculatingTime && !isWin && timerCoroutine == null && gameStart)
             StartTimer();
 
-        if (!isWin && isCalculatingTime && gameStart)
+        if (!isWin && isCalculatingTime && gameStart && !isStop)
             gameStartTime += Time.deltaTime;
 
         if (score >= rooms[currentRoomIndex - 1].winScore)
         {
-            CurrentGameWin();
+            //TODO:停止游戏
+            isStop = true;
+            StopTimer();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CurrentGameWin();
+                isStop = false;
+            }
         }
         
         // 更新目标显示
@@ -95,7 +102,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (timerCoroutine != null || isWin)
             return;
-
+        
         timerCoroutine = StartCoroutine(TimerCoroutine(updateDuration));
     }
 
