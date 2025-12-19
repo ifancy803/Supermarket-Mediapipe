@@ -31,8 +31,8 @@ public class Stuff : MonoBehaviour
 
 public enum StuffType
 {
-    苹果,
-    土豆
+    Fruit,
+    Vegetable
 }
 
 public enum 水果

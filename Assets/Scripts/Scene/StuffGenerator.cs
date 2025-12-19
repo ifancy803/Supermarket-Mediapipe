@@ -19,6 +19,10 @@ public class StuffGenerator : MonoBehaviour
     private List<float> distinctRows;
     private List<float> distinctCols;
     
+    [Header("生成比例设置")]
+    [Range(0.1f, 0.9f)]
+    public float vegetableRatio = 0.7f; // 蔬菜比例，默认为70%
+    
     private void OnEnable()
     {
         stuffPositionList.Clear();
@@ -77,23 +81,67 @@ public class StuffGenerator : MonoBehaviour
             return;
         
         // 获取所有生成点的Y坐标（行）和X坐标（列）
-        // 使用精确的坐标值而不是四舍五入，以处理非整数坐标
         distinctRows = stuffPositionList.Select(p => p.y).Distinct().OrderBy(y => y).ToList();
         distinctCols = stuffPositionList.Select(p => p.x).Distinct().OrderBy(x => x).ToList();
         
         // 创建二维数组
         currentStuffGrid = new GameObject[distinctRows.Count, distinctCols.Count];
         
-        // 生成物品并放入对应位置
-        foreach (var pos in stuffPositionList)
+        // 分离水果和蔬菜数据
+        var fruitDataList = stuffDataList.Where(data => data.stuffType == StuffType.Fruit).ToList();
+        var vegetableDataList = stuffDataList.Where(data => data.stuffType == StuffType.Vegetable).ToList();
+        
+        // 检查数据是否存在
+        if (fruitDataList.Count == 0 && vegetableDataList.Count == 0)
         {
+            return;
+        }
+        
+        // 计算理想的蔬菜数量
+        int totalPositions = stuffPositionList.Count;
+        int idealVegetableCount = Mathf.RoundToInt(totalPositions * vegetableRatio);
+        
+        // 根据实际可用数据调整蔬菜数量
+        int vegetableCount = AdjustVegetableCountByAvailableData(idealVegetableCount, totalPositions, 
+            vegetableDataList.Count, fruitDataList.Count);
+        
+        int fruitCount = totalPositions - vegetableCount;
+        
+        // 创建物品类型列表
+        List<StuffData> allStuffToSpawn = new List<StuffData>();
+        
+        // 根据可用数据填充列表
+        FillSpawnList(allStuffToSpawn, vegetableDataList, fruitDataList, vegetableCount, fruitCount);
+        
+        // 如果列表仍然不够长，用可用数据补充
+        if (allStuffToSpawn.Count < totalPositions)
+        {
+            SupplementSpawnList(allStuffToSpawn, vegetableDataList, fruitDataList, totalPositions);
+        }
+        
+        // 打乱列表以确保随机分布
+        allStuffToSpawn = allStuffToSpawn.OrderBy(x => Random.value).ToList();
+        
+        // 生成物品并放入对应位置
+        for (int i = 0; i < stuffPositionList.Count; i++)
+        {
+            var pos = stuffPositionList[i];
             var stuff = Instantiate(stuffPrefab, transform);
             
-            //var currentStuffDataList = stuffDataList.FindAll(data => data.stuffType == stuffType);
-            var currentStuffDataList = stuffDataList;
-            if (currentStuffDataList.Count > 0)
+            // 从预先生成的列表中获取数据
+            StuffData currentStuffData = null;
+            if (i < allStuffToSpawn.Count)
             {
-                var currentStuffData = currentStuffDataList[Random.Range(0, currentStuffDataList.Count)];
+                currentStuffData = allStuffToSpawn[i];
+            }
+            else
+            {
+                // 如果列表不够长，随机选择一个
+                currentStuffData = GetRandomStuffData(vegetableDataList, fruitDataList);
+            }
+            
+            if (currentStuffData != null)
+            {
                 stuff.SetUpStuff(currentStuffData, pos);
                 
                 // 计算行列索引
@@ -113,19 +161,124 @@ public class StuffGenerator : MonoBehaviour
                     var shelfInfo = stuff.gameObject.AddComponent<ShelfInfo>();
                     shelfInfo.Row = rowIndex;
                     shelfInfo.Col = colIndex;
+                    
+                    // 在对象上标记类型信息
+                    var typeMarker = stuff.gameObject.AddComponent<StuffTypeMarker>();
+                    typeMarker.Type = currentStuffData.stuffType;
                 }
                 
                 currentStuffList.Add(stuff.gameObject);
             }
             else
             {
-                Debug.LogWarning("没有找到对应的StuffData！");
+                Destroy(stuff.gameObject);
             }
         }
-        
-        PrintGridInfo(); // 打印调试信息
-        
+    }
 
+    /// <summary>
+    /// 根据可用数据调整蔬菜数量
+    /// </summary>
+    private int AdjustVegetableCountByAvailableData(int idealVegetableCount, int totalPositions, 
+        int availableVegetables, int availableFruits)
+    {
+        // 计算最大可能的蔬菜数量
+        int maxPossibleVegetables = Mathf.Min(availableVegetables, totalPositions);
+        
+        // 计算最大可能的水果数量
+        int maxPossibleFruits = Mathf.Min(availableFruits, totalPositions);
+        
+        // 如果理想蔬菜数量超过可用蔬菜数量
+        if (idealVegetableCount > maxPossibleVegetables)
+        {
+            // 尽量接近理想比例，但不超过可用数量
+            return maxPossibleVegetables;
+        }
+        
+        // 如果剩余的水果数量不足
+        int remainingFruits = totalPositions - idealVegetableCount;
+        if (remainingFruits > maxPossibleFruits)
+        {
+            // 需要减少蔬菜数量，以便有足够的水果
+            return totalPositions - maxPossibleFruits;
+        }
+        
+        return idealVegetableCount;
+    }
+
+    /// <summary>
+    /// 填充生成列表
+    /// </summary>
+    private void FillSpawnList(List<StuffData> spawnList, 
+        List<StuffData> vegetableDataList, List<StuffData> fruitDataList,
+        int vegetableCount, int fruitCount)
+    {
+        // 添加蔬菜
+        for (int i = 0; i < vegetableCount && i < vegetableDataList.Count; i++)
+        {
+            spawnList.Add(vegetableDataList[Random.Range(0, vegetableDataList.Count)]);
+        }
+        
+        // 添加水果
+        for (int i = 0; i < fruitCount && i < fruitDataList.Count; i++)
+        {
+            spawnList.Add(fruitDataList[Random.Range(0, fruitDataList.Count)]);
+        }
+    }
+
+    /// <summary>
+    /// 补充生成列表
+    /// </summary>
+    private void SupplementSpawnList(List<StuffData> spawnList,
+        List<StuffData> vegetableDataList, List<StuffData> fruitDataList,
+        int totalPositions)
+    {
+        int currentCount = spawnList.Count;
+        int remaining = totalPositions - currentCount;
+        
+        // 随机选择剩余的类型
+        for (int i = 0; i < remaining; i++)
+        {
+            StuffData randomData = GetRandomStuffData(vegetableDataList, fruitDataList);
+            if (randomData != null)
+            {
+                spawnList.Add(randomData);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 随机获取物品数据
+    /// </summary>
+    private StuffData GetRandomStuffData(List<StuffData> vegetableDataList, List<StuffData> fruitDataList)
+    {
+        // 随机选择类型（根据可用性加权）
+        bool canPickVegetable = vegetableDataList.Count > 0;
+        bool canPickFruit = fruitDataList.Count > 0;
+        
+        if (!canPickVegetable && !canPickFruit)
+            return null;
+        
+        if (canPickVegetable && canPickFruit)
+        {
+            // 两者都有，随机选择
+            if (Random.value > 0.5f)
+            {
+                return vegetableDataList[Random.Range(0, vegetableDataList.Count)];
+            }
+            else
+            {
+                return fruitDataList[Random.Range(0, fruitDataList.Count)];
+            }
+        }
+        else if (canPickVegetable)
+        {
+            return vegetableDataList[Random.Range(0, vegetableDataList.Count)];
+        }
+        else
+        {
+            return fruitDataList[Random.Range(0, fruitDataList.Count)];
+        }
     }
 
     /// <summary>
@@ -171,7 +324,6 @@ public class StuffGenerator : MonoBehaviour
             row < 0 || row >= currentStuffGrid.GetLength(0) || 
             col < 0 || col >= currentStuffGrid.GetLength(1))
         {
-            Debug.LogWarning($"无效的行列索引: ({row}, {col})");
             return null;
         }
         
@@ -260,39 +412,6 @@ public class StuffGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// 打印二维数组内容（用于调试）
-    /// </summary>
-    public void PrintGridInfo()
-    {
-        if (currentStuffGrid == null)
-        {
-            Debug.Log("二维数组为空");
-            return;
-        }
-        
-        int rows = currentStuffGrid.GetLength(0);
-        int cols = currentStuffGrid.GetLength(1);
-        
-        
-        for (int row = 0; row < rows; row++)
-        {
-            string rowInfo = $"行 {row}: ";
-            for (int col = 0; col < cols; col++)
-            {
-                if (currentStuffGrid[row, col] != null)
-                {
-                    rowInfo += $"[{row},{col}]";
-                }
-                else
-                {
-                    rowInfo += "[   ]";
-                }
-                if (col < cols - 1) rowInfo += " ";
-            }
-        }
-    }
-
-    /// <summary>
     /// 获取所有非空架子的行列索引
     /// </summary>
     public List<Vector2Int> GetAllShelfIndices()
@@ -322,6 +441,9 @@ public class StuffGenerator : MonoBehaviour
     public List<GameObject> GetAdjacentShelves(int row, int col, bool includeDiagonals = false)
     {
         List<GameObject> adjacent = new List<GameObject>();
+        
+        if (currentStuffGrid == null)
+            return adjacent;
         
         // 上
         if (row > 0 && currentStuffGrid[row - 1, col] != null)
@@ -361,6 +483,32 @@ public class StuffGenerator : MonoBehaviour
         return adjacent;
     }
 
+    /// <summary>
+    /// 获取当前物品的蔬菜和水果数量统计
+    /// </summary>
+    public (int vegetableCount, int fruitCount) GetTypeCounts()
+    {
+        int vegetableCount = 0;
+        int fruitCount = 0;
+        
+        foreach (var stuffObj in currentStuffList)
+        {
+            if (stuffObj != null)
+            {
+                var typeMarker = stuffObj.GetComponent<StuffTypeMarker>();
+                if (typeMarker != null)
+                {
+                    if (typeMarker.Type == StuffType.Vegetable)
+                        vegetableCount++;
+                    else if (typeMarker.Type == StuffType.Fruit)
+                        fruitCount++;
+                }
+            }
+        }
+        
+        return (vegetableCount, fruitCount);
+    }
+
     public void UpdateStuff(object value)
     {
         SetUpAllStuff();
@@ -387,5 +535,19 @@ public class ShelfInfo : MonoBehaviour
     { 
         get => col; 
         set => col = value; 
+    }
+}
+
+/// <summary>
+/// 物品类型标记组件
+/// </summary>
+public class StuffTypeMarker : MonoBehaviour
+{
+    [SerializeField] private StuffType type;
+    
+    public StuffType Type
+    {
+        get => type;
+        set => type = value;
     }
 }

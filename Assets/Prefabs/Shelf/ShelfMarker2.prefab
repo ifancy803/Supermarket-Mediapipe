@@ -48,6 +48,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1831997298700858026
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &3708039910868739965
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +156,14 @@ MonoBehaviour:
   stuffDataList:
   - {fileID: 11400000, guid: d05486afeb2aa354eac29ddecf7f6abb, type: 2}
   - {fileID: 11400000, guid: 6bc588911225bff458462eb2f0cb8af9, type: 2}
+  - {fileID: 11400000, guid: f09ff482ad6061149b0e166267f0ceb3, type: 2}
+  - {fileID: 11400000, guid: 2445774671c01a84faabe54aa2a426f5, type: 2}
+  - {fileID: 11400000, guid: 81944192972f9464e991711e75f3a3b3, type: 2}
+  - {fileID: 11400000, guid: 0bdfcf5f014f7f84caa35d82eb9fa8e2, type: 2}
+  - {fileID: 11400000, guid: bd857270f57c5b34dadffc8e5c122841, type: 2}
   stuffPositionList: []
   currentStuffList: []
+  vegetableRatio: 0.59
 --- !u!114 &9143485492617519824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +240,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &6650536876895003163
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +289,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &7763704397067926113
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +338,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8117029078956950288
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +387,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 1
+  currentSelectorUI: {fileID: 0}
 --- !u!1001 &8748325740606192130
 PrefabInstance:
   m_ObjectHideFlags: 0

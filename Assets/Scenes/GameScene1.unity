@@ -1471,21 +1471,21 @@ MonoBehaviour:
   - id: 1
     winScore: 6
     updateGap: 10
-    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+    shelfPrefab: {fileID: 3708039910868739965, guid: 9af91606466e50b45a12a7dd02a87163,
       type: 3}
     aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
       type: 3}
   - id: 2
     winScore: 8
     updateGap: 10
-    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+    shelfPrefab: {fileID: 3708039910868739965, guid: 9af91606466e50b45a12a7dd02a87163,
       type: 3}
     aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
       type: 3}
   - id: 3
     winScore: 10
     updateGap: 10
-    shelfPrefab: {fileID: 6403839924941213858, guid: adf84cf1fd01bff45afc7a4907270b3b,
+    shelfPrefab: {fileID: 3708039910868739965, guid: 9af91606466e50b45a12a7dd02a87163,
       type: 3}
     aimStuff: {fileID: 8458388131903513461, guid: fe1c10a9ac51e6446991a25c8af42085,
       type: 3}

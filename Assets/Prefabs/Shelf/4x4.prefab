@@ -48,6 +48,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1015589469869927390
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1797370872498406653
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +146,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &1888842504919553180
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,8 +218,15 @@ MonoBehaviour:
   stuffDataList:
   - {fileID: 11400000, guid: d05486afeb2aa354eac29ddecf7f6abb, type: 2}
   - {fileID: 11400000, guid: 6bc588911225bff458462eb2f0cb8af9, type: 2}
+  - {fileID: 11400000, guid: bd857270f57c5b34dadffc8e5c122841, type: 2}
+  - {fileID: 11400000, guid: 0bdfcf5f014f7f84caa35d82eb9fa8e2, type: 2}
+  - {fileID: 11400000, guid: 2445774671c01a84faabe54aa2a426f5, type: 2}
+  - {fileID: 11400000, guid: 6c8040daf5e6c0445b07b973085d69b8, type: 2}
+  - {fileID: 11400000, guid: f09ff482ad6061149b0e166267f0ceb3, type: 2}
+  - {fileID: 11400000, guid: 81944192972f9464e991711e75f3a3b3, type: 2}
   stuffPositionList: []
   currentStuffList: []
+  vegetableRatio: 0.7
 --- !u!114 &1838586402632680145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +303,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &2878829651342676351
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +352,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &3225783301410641174
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +401,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &3399306193753422681
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +450,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &4112207004077770001
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +499,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &5673947208527824237
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +548,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &7214904385608571815
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +597,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &7283881060781252481
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +646,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8024214555418489099
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +695,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8508952522445437430
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +744,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8737330160734110097
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +793,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8824373081038840201
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +842,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1 &8901857135509682263
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +891,7 @@ MonoBehaviour:
     type: 3}
   positionOffset: {x: 0, y: 0.25, z: 0.3}
   uiScale: 0.01
+  currentSelectorUI: {fileID: 0}
 --- !u!1001 &2040754729880837797
 PrefabInstance:
   m_ObjectHideFlags: 0
